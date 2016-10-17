@@ -21,7 +21,6 @@ Book::Book(const QString &title, const QString &genre)
 {
     setTitle(title);
     setGenre(genre);
-
 }
 
 void Book::read(const QJsonObject &json){

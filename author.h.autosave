@@ -17,6 +17,7 @@ private:
 public:
     Author(QString fullName);
     Author(QString fullName, vector <Book> book);
+    
     void setFullName(QString fullName) {
         FullName = fullName;
     }

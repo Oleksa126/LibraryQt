@@ -1,0 +1,21 @@
+#include "Author.h"
+#include "iostream"
+#include "fstream"
+
+
+Author::Author(QString fullName)
+{
+    setFullName(fullName);
+}
+
+Author::Author(QString fullName, vector<Book> book)
+{
+    setFullName(fullName);
+    setListBook(book);
+}
+
+Author::~Author()
+{
+    
+}
+
