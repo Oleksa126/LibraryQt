@@ -10,11 +10,12 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    author.cpp \
     book.cpp \
-    reader.cpp
+    reader.cpp \
+    librarian.cpp
 
 HEADERS += \
     author.h \
     book.h \
-    reader.h
+    reader.h \
+    librarian.h

@@ -4,35 +4,36 @@
 #pragma once
 
 #include "QString"
-#include "vector"
-#include "Book.h"
 
 using namespace std;
 
 class Author
 {
 private:
-    QString FullName;
-    vector <Book> ListBook;
+    QString FirstName;
+    QString LastName;
 public:
-    Author(QString fullName);
-    Author(QString fullName, vector <Book> book);
-    void setFullName(QString fullName) {
-        FullName = fullName;
-    }
-    void setListBook(vector <Book> book){
-        ListBook.swap(book);
+    Author(QString firstName, QString lastName){
+        setFirstName(firstName);
+        setLastName(lastName);
     }
 
-    //void write(Author author);
+    void setFirstName(QString firstName) {
+       FirstName = firstName;
+    }
+    void setLastName(QString lastName) {
+       LastName = lastName;
+    }
+
+    QString getFirstName() const {
+        return FirstName;
+    }
+
+    QString getLastName() const {
+        return LastName;
+    }
 
 
-    QString getFullName() const {
-        return FullName;
-    }
-    vector<Book> getListBook() const {
-        return ListBook;
-    }
     ~Author();
 };
 #endif // AUTHOR_H

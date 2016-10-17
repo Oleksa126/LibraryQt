@@ -2,7 +2,7 @@
 #include "iostream"
 #include "book.h"
 #include "book.cpp"
-#include "author.h"
+#include "librarian.h"
 #include "reader.h"
 
 using namespace  std;
@@ -10,13 +10,10 @@ using namespace  std;
 int main()
 {
 //    Book one("Harry potter", "fantasy");
-//    Book two("Mark Twen", "adventer");
-//    vector<Book>ListBook = { one,two };
+//    Book two("fsjgbaj", "gbdfs");
 
-//    Author aut("Prosto priclad", ListBook);
+//    Librarian first;
+//    first.setReader("Oleksa", "Bazavlyk", 19);
 
-
-    //Book one(QStringLiteral("Harry potter"), QStringLiteral("fantasy"));
-    Book one("Harry potter", "fantasy");
     return 0;
 }

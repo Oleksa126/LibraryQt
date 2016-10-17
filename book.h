@@ -6,13 +6,15 @@
 #include "QString"
 #include "QVector"
 #include "QJsonObject"
+#include "author.h"
 using namespace std;
 
 class Book
 {
 private:
     QString Title;
-    QString Genre;//жанр
+    QString Genre;
+    Author author;
 public:
     Book();
     Book(const QString &title, const QString &genre);
@@ -23,13 +25,6 @@ public:
     void setGenre(const QString &genre) {
         Genre = genre;
     }
-
-    void read(const QJsonObject &json);
-    void write(QJsonObject &json) const;
-
-    //void write(QString title, QString genre);
-
-    //vector<Book> writeValueAsObject();
 
     QString getTitle() const {
         return Title;
