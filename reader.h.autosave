@@ -20,14 +20,14 @@ public:
     void setFullName(QString firstName, QString lastName);
     void setAge(int age);
 
-    QString & getFullName() const
+    QString getFullName() const
     {
        // return (FirstName + LastName);
     }
     int getAge() const
     {
         return Age;
-    };
+    }
 
     ~Reader();
 };

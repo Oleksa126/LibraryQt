@@ -15,12 +15,12 @@ private:
     QString Genre;//жанр
 public:
     Book();
-    Book(QString title, QString genre);
+    Book(const QString &title, const QString &genre);
 
-    void setTitle(QString title) {
+    void setTitle(const QString &title) {
         Title = title;
     }
-    void setGenre(QString genre) {
+    void setGenre(const QString &genre) {
         Genre = genre;
     }
 

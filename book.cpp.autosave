@@ -3,6 +3,7 @@
 #include "fstream"
 #include "QJsonDocument"
 #include "QFile"
+
 using namespace std;
 
 Book::Book()
@@ -21,12 +22,6 @@ Book::Book(const QString &title, const QString &genre)
     setTitle(title);
     setGenre(genre);
 
-    QFile saveFile = QStringLiteral ("save.json");
-    QJsonObject bookObject;
-        write(bookObject);
-        QJsonDocument saveDoc(bookObject);
-        saveFile.write(saveDoc.toJson());
-
 }
 
 void Book::read(const QJsonObject &json){
@@ -38,6 +33,12 @@ void Book::write(QJsonObject &json) const
 {
     json["Title"] = Title;
     json["Genre"] = Genre;
+    
+    QFile saveFile = QStringLiteral ("save.json");
+    QJsonObject bookObject;
+        write(bookObject);
+        QJsonDocument saveDoc(bookObject);
+        saveFile.write(saveDoc.toJson());
 }
 
 Book::~Book()

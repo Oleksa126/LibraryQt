@@ -1,6 +1,7 @@
 #include <QCoreApplication>
 #include "iostream"
 #include "book.h"
+#include "book.cpp"
 #include "author.h"
 #include "reader.h"
 
@@ -14,9 +15,8 @@ int main()
 
 //    Author aut("Prosto priclad", ListBook);
 
-    QJsonObject obj;
-    QJsonDocument json;
 
-
+    //Book one(QStringLiteral("Harry potter"), QStringLiteral("fantasy"));
+    Book one("Harry potter", "fantasy");
     return 0;
 }
