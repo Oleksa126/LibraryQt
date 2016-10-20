@@ -15,9 +15,10 @@ private:
     QString FirstName;
     QString LastName;
     int Age;
-    vector<Book> ListBook;
+    vector<Book> СardReader;
 public:
-    Reader(QString firstName, QString lastName,int age, vector<Book> book);
+    Reader(QString firstName, QString lastName,int age);
+
     Reader();
 
     void setFirstName(QString firstName){
@@ -33,17 +34,20 @@ public:
     QString getFirstName(){
        return FirstName;
     }
+
     QString getLastName(){
         return LastName;
     }
+
     int getAge() const
     {
         return Age;
     }
 
-    void setListBook(Book book){
-        ListBook.push_back(book);
+    void addBookAtСard(Book book){
+        СardReader.push_back(book);
     }
+
     ~Reader();
 };
 

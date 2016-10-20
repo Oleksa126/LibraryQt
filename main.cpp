@@ -1,19 +1,24 @@
 #include <QCoreApplication>
 #include "iostream"
 #include "book.h"
-#include "book.cpp"
-#include "librarian.h"
+#include "library.h"
 #include "reader.h"
+
 
 using namespace  std;
 
 int main()
 {
-//    Book one("Harry potter", "fantasy");
-//    Book two("fsjgbaj", "gbdfs");
+    Book first("Harry potter", "fantasy");
+    Book second("farytales","my");
 
-//    Librarian first;
-//    first.setReader("Oleksa", "Bazavlyk", 19);
+    Library one;
+    one.addBook(first);
+    one.addBook(second);
 
+    QString a = one.serialize();
+    //cout<<a.toStdString();
+
+    one.writeToFile(a);
     return 0;
 }

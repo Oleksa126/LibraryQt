@@ -1,12 +1,13 @@
 #ifndef BOOK_H
 #define BOOK_H
 
-#pragma once
+//#pragma once
 
 #include "QString"
 #include "QVector"
 #include "QJsonObject"
-#include "author.h"
+//#include "author.h"
+
 using namespace std;
 
 class Book
@@ -14,7 +15,7 @@ class Book
 private:
     QString Title;
     QString Genre;
-    Author author;
+    //Author author;
 public:
     Book();
     Book(const QString &title, const QString &genre);
@@ -32,6 +33,9 @@ public:
     QString getGenre() const{
         return Genre;
     }
+
+
+
     ~Book();
 };
 

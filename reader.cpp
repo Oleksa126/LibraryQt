@@ -1,16 +1,15 @@
-#include "Reader.h"
+#include "reader.h"
 
 Reader::Reader()
 {
 
 }
 
-Reader::Reader(QString firstName, QString lastName,int age, vector<Book> book)
+Reader::Reader(QString firstName, QString lastName,int age)
 {
-    setFirstName(firsName);
+    setFirstName(firstName);
     setLastName(lastName);
     setAge(age);
-    ListBook = book;
 }
 
 Reader::~Reader()

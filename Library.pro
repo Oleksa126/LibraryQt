@@ -12,10 +12,12 @@ TEMPLATE = app
 SOURCES += main.cpp \
     book.cpp \
     reader.cpp \
-    librarian.cpp
+    library.cpp \
+    reading.cpp
 
 HEADERS += \
     author.h \
     book.h \
     reader.h \
-    librarian.h
+    library.h \
+    reading.h
