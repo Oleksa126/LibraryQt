@@ -13,6 +13,7 @@ private:
     QString FirstName;
     QString LastName;
 public:
+    Author(){};
     Author(QString firstName, QString lastName){
         setFirstName(firstName);
         setLastName(lastName);

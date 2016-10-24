@@ -1,10 +1,14 @@
 [
     {
+        "First Name": "Joan",
         "Genre": "fantasy",
+        "Last Name": "Rouling",
         "Title": "Harry potter"
     },
     {
+        "First Name": "Mark",
         "Genre": "my",
+        "Last Name": "Twen",
         "Title": "farytales"
     }
 ]

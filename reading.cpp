@@ -1,6 +1,6 @@
 #include "reading.h"
 
-Reading::Reading()
-{
+//Reading::Reading(QString whenTook, Book bookReader)
+//{
 
-}
+//}
