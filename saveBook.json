@@ -1,14 +1,18 @@
 [
     {
-        "First Name": "Joan",
+        "Author": {
+            "First Name": "Joan",
+            "Last Name": "Rouling"
+        },
         "Genre": "fantasy",
-        "Last Name": "Rouling",
         "Title": "Harry potter"
     },
     {
-        "First Name": "Mark",
+        "Author": {
+            "First Name": "Mark",
+            "Last Name": "Twen"
+        },
         "Genre": "my",
-        "Last Name": "Twen",
         "Title": "farytales"
     }
 ]

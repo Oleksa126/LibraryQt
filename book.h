@@ -4,61 +4,48 @@
 #include "QString"
 #include "QVector"
 #include "QJsonObject"
+
 using namespace std;
 
-/*
 struct Author{
     QString FirstName;
     QString LastName;
-    Author(QString firstName, QString lastName):FirstName(firstName), LastName(lastName){}
+    Author(){}
+    Author(QString &firstName, QString &lastName){FirstName = firstName; LastName = lastName;}
 
-    Book(const QString &title, const QString &genre, const QString &firstName, const QString &lastName)
-        : author (new Author(firstName, lastName)){
-        setTitle(title);
-        setGenre(genre);
+   QJsonObject saveAuthorToJson() const
+    {
+        QJsonObject jsonObj;
+        jsonObj["First Name"] = FirstName;
+        jsonObj["Last Name"] = LastName;
+        return jsonObj;
     }
+   Author readAutorFromJson(const QJsonObject &json){
+      return Author (json["First Name"].toString(), json["Last Name"].toString());
+   }
 };
-*/
+
 
 class Book
-{
-private:
+{   
+public:
     QString Title;
     QString Genre;
-    QString FirstName;
-    QString LastName;
-public:
-    Book(const QString &title, const QString &genre, const QString &firstName, const QString &lastName){
-        setTitle(title);
-        setGenre(genre);
-        setFirstName(firstName);
-        setLastName(lastName);
-    }
+    Author author;
 
-    void setTitle(const QString &title) {
+    Book(const QString &title, const QString &genre, const QString &firstName, const QString &lastName)
+    {
         Title = title;
-    }
-    void setGenre(const QString &genre) {
         Genre = genre;
-    }
-    void setFirstName(const QString &firstName){
-        FirstName = firstName;
-    }
-    void setLastName(const QString &lastName){
-        LastName = lastName;
+        author.FirstName = firstName;
+        author.LastName = lastName;
     }
 
-    QString getTitle() const {
-        return Title;
-    }
-    QString getGenre() const{
-        return Genre;
-    }
-    QString getLastName() const {
-        return LastName;
-    }
-    QString getFirsName() const {
-        return FirstName;
+    Book(const QString &title, const QString &genre, Author aut)
+    {
+        Title = title;
+        Genre = genre;
+        author = aut;
     }
 
     ~Book();

@@ -8,44 +8,32 @@ Library::Library()
 void Library:: searchByGenre(QString genre){
     vector<Book> resultGenre;
     for(int i = 0; i<ListBook.size(); i++){
-        if(ListBook[i].getGenre() == genre){
+        if(ListBook[i].Genre == genre){
             resultGenre.push_back(ListBook[i]);
         }
     }
 
     cout << "\n\n\t\t\t Search books by " << genre.toStdString() << "\n\n";
-    for(int i = 0; i<resultGenre.size(); i++){
-        cout<<resultGenre[i].getTitle().toStdString()<<"\t";
-        cout<<resultGenre[i].getGenre().toStdString()<<"\t";
-        cout<<resultGenre[i].getFirsName().toStdString()<<"\t";
-        cout<<resultGenre[i].getLastName().toStdString()<<endl;
-    }
 }
 
 void Library:: searchByAuthor(QString author){
     vector<Book> resultAuthor;
-    for(int i = 0; i<ListBook.size(); i++){
-        if(ListBook[i].getFirsName() == author || ListBook[i].getLastName() == author){
-            resultAuthor.push_back(ListBook[i]);
-        }
-    }
+//    for(int i = 0; i<ListBook.size(); i++){
+//        if(ListBook[i].getFirsName() == author || ListBook[i].getLastName() == author){
+//            resultAuthor.push_back(ListBook[i]);
+//        }
+//    }
 
     cout << "\n\n\t\t\t Search books by " << author.toStdString() << "\n\n";
-    for(int i = 0; i<resultAuthor.size(); i++){
-        cout<<resultAuthor[i].getTitle().toStdString()<<"\t";
-        cout<<resultAuthor[i].getGenre().toStdString()<<"\t";
-        cout<<resultAuthor[i].getFirsName().toStdString()<<"\t";
-        cout<<resultAuthor[i].getLastName().toStdString()<<endl;
-    }
 }
 
 void Library:: saveBookToJsonString(QJsonArray &json)const{
     for(int i = 0; i< ListBook.size(); i++){
         QJsonObject jsonObj;
-        jsonObj["First Name"] = ListBook[i].getFirsName();
-        jsonObj["Last Name"] = ListBook[i].getLastName();
-        jsonObj["Title"] = ListBook[i].getTitle(); //json.setValue("Title",ListBook[i].getTitle());
-        jsonObj["Genre"] = ListBook[i].getGenre();
+        ListBook[i].author.saveAuthorToJson();
+        jsonObj["Author"] = ListBook[i].author.saveAuthorToJson();
+        jsonObj["Title"] = ListBook[i].Title;
+        jsonObj["Genre"] = ListBook[i].Genre;
         json.push_back(jsonObj);
     }
 }

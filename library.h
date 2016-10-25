@@ -10,7 +10,7 @@
 #include <QTextStream>
 #include "iostream"
 #include "reader.h"
-//#include "book.h"
+#include "book.h"
 
 using namespace std;
 
@@ -21,14 +21,6 @@ public:
     vector <Reader> ReaderList;
     vector <Book> ListBook;
 
-    void show(){
-        for(int i = 0; i<ListBook.size(); i++){
-        cout<<ListBook[i].getTitle().toStdString()<<"\t";
-        cout<<ListBook[i].getGenre().toStdString()<<"\t";
-        cout<<ListBook[i].getFirsName().toStdString()<<"\t";
-        cout<<ListBook[i].getLastName().toStdString()<<endl;
-        }
-    }
     Library();
 
     void addReader(QString firstName, QString lastName,int age){
@@ -42,15 +34,24 @@ public:
 
     void loadFromJsonFile();
     Book readBook(const QJsonObject &json){
-       //return Book(json.value("Title").toString(),json.value("Genre").toString());
-       return Book(json["Title"].toString(),json["Genre"].toString(), json["First Name"].toString(), json["Last Name"].toString());
+       QJsonObject jsonObj = json["Author"].toObject();
+       Author a.readAutorFromJson(jsonObj);
+       return Book(json["Title"].toString(),json["Genre"].toString(), a);
     }
     void saveBookToJsonString(QJsonArray &json)const;
     void saveBookToJsonFile();
 
+
+
+
+
+
+
+
+
 //    void Library:: saveReaderToJsonString(QJsonArray &json)const{
 //        for(int i = 0; i< ReaderList.size(); i++){
-//            QJsonObject jsonObj;
+//           QJsonObject jsonObj;
 
 //            jsonObj["First Name"] = ReaderList[i].getFirstName();
 //            jsonObj["Last Name"] = ReaderList[i].getLastName();
