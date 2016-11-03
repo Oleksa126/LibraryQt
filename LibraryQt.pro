@@ -3,7 +3,7 @@ QT -= gui
 
 CONFIG += c++11
 
-TARGET = QW
+TARGET = LibraryQt
 CONFIG += console
 CONFIG -= app_bundle
 
