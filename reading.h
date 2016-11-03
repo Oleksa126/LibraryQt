@@ -4,31 +4,57 @@
 #include "QDate"
 #include "QString"
 #include "book.h"
+#include "library.h"
 
 class Reading
 {
 private:
     QDate TookBook;
     QDate ReturnBook;
-    Book book;
+    int BookID;
 public:
-//    Reading(QString whenTook, Book bookReader);
-//    Reading(QString whenTook, QString whenReturn, Book bookReader);
+    Reading(){}
+    Reading(QString whenTook, QString whenReturn,int id){
+        setDateTookBook(whenTook);
+        setDateReturnBook(whenReturn);
+        setBookId(id);
+    }
 
+    QJsonObject saveReadingToJson()const{
+        QJsonObject json;
+        json["TookBook"] = this->getStingDateTookBook();
+        json["ReturnBook"] = this->getStringDateReturnBook();
+        json["ID"] = this->getBookID();
+        return json;
+    }
+    void readReading(QJsonObject &json){
+        this->setBookId(json["ID"].toInt());
+        this->setDateReturnBook(json["ReturnBook"].toString());
+        this->setDateTookBook(json["TookBook"].toString());
+    }
+    void setBookId(int id){
+        BookID = id;}
     void setDateTookBook(QString date){
-        TookBook.fromString(date);
+        TookBook = QDate::fromString(date,"yyyyMd");
     }
     void setDateReturnBook(QString date){
-        ReturnBook.fromString(date);
+        ReturnBook = QDate::fromString(date,"yyyyMd");
     }
 
-    QDate getDateTookBook(){
+    int getBookID()const{return BookID;}
+    QDate getDateTookBook()const{
         return TookBook;
     }
-    QDate getDateReturnBook(){
+    QDate getDateReturnBook()const{
         return ReturnBook;
     }
 
+    QString getStingDateTookBook()const{
+        return TookBook.toString();
+    }
+    QString getStringDateReturnBook()const{
+        return ReturnBook.toString();
+    }
 };
 
 #endif // READING_H
