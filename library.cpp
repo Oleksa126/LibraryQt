@@ -9,6 +9,11 @@ void Library:: searchByGenre(QString genre){
     }
 
     cout << "\n\n\t\t\t Search books by " << genre.toStdString() << "\n\n";
+    if(resultGenre.empty()){
+        cout<<"Book not found. Please try somothing else\n";
+        return;
+    }
+    cout<<"# \t ID \t Title \t \t Genre \t\t Author \n";
     for(int i = 0; i<resultGenre.size(); i++){
         cout<<i<<"\t";
         resultGenre[i].showBook();
@@ -25,6 +30,11 @@ void Library:: searchByAuthor(QString author){
     }
 
     cout << "\n\n\t\t\t Search books by " << author.toStdString() << "\n\n";
+    if(resultAuthor.empty()){
+        cout<<"Book not found. Please try somothing else\n";
+        return;
+    }
+    cout<<"# \t ID \t Title \t \t Genre \t\t Author \n";
     for(int i = 0; i<resultAuthor.size(); i++){
         cout<<i<<"\t";
         resultAuthor[i].showBook();
@@ -47,7 +57,7 @@ void Library:: saveBookToJsonFile(){
     doc.setArray(json);
     QString result = QString::fromUtf8(doc.toJson(QJsonDocument::Indented));
 
-    QFile inFile("C:/Users/Oleksa/Documents/QW/Books.json");
+    QFile inFile("C:/Users/Oleksa/Documents/LibraryQt/data/Books.json");
     QTextStream stream(&inFile);
     if(!inFile.open(QIODevice::WriteOnly | QIODevice::Text)){
         cout << "Error";
@@ -60,7 +70,7 @@ void Library:: saveBookToJsonFile(){
 }
 
 void Library:: loadBooksFromJsonFile(){
-    QFile file("C:/Users/Oleksa/Documents/QW/Books.json");
+    QFile file("C:/Users/Oleksa/Documents/LibraryQt/data/Books.json");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
         cout<<"Error";
     }
@@ -88,7 +98,7 @@ void Library:: saveReaderToJsonFile(){
     doc.setArray(json);
     QString result = QString::fromUtf8(doc.toJson(QJsonDocument::Indented));
 
-    QFile inFile("C:/Users/Oleksa/Documents/QW/Readers.json");
+    QFile inFile("C:/Users/Oleksa/Documents/LibraryQt/data/Readers.json");
     QTextStream stream(&inFile);
     if(!inFile.open(QIODevice::WriteOnly | QIODevice::Text)){
         cout << "Error";
@@ -101,11 +111,12 @@ void Library:: saveReaderToJsonFile(){
 }
 
 void Library:: loadReadersFromJsonFile(){
-    QFile file("C:/Users/Oleksa/Documents/QW/Readers.json");
+    QFile file("C:/Users/Oleksa/Documents/LibraryQt/data/Readers.json");
     if(!file.open(QIODevice::ReadOnly | QIODevice::Text)){
         cout<<"Error";
     }
-    QJsonDocument doc = QJsonDocument ::fromJson(file.readAll());
+    QString str = (QString)file.readAll();
+    QJsonDocument doc = QJsonDocument ::fromJson(str.toUtf8())  ; //QJsonDocument ::fromJson(file.readAll());
     file.close();
 
     QJsonArray jsonArray = doc.array();
@@ -115,7 +126,7 @@ void Library:: loadReadersFromJsonFile(){
 }
 
 Reader Library:: readReader(const QJsonObject &json){
-    Reader reader;//(json["FirstName"].toString(), json["LastName"].toString(), json["Age"].toInt());
+    Reader reader(json["FirstName"].toString(), json["LastName"].toString(), json["Age"].toInt());
     QJsonArray jsonArray = json["Book"].toArray();
     foreach (QJsonValue jsonReader, jsonArray) {
         Reading r;
@@ -123,5 +134,4 @@ Reader Library:: readReader(const QJsonObject &json){
         reader.addBookAtСard(r);
     }
     return reader;
-;
 }

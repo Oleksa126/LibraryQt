@@ -4,29 +4,42 @@
 #include "library.h"
 #include "reader.h"
 #include "QDate"
+#include "menu.h"
 
 using namespace  std;
 
+
 int main()
 {
-    Library library;
-    library.loadBooksFromJsonFile();
+    Menu menu;
+    menu.menu_();
 
+//    Library library;
 
-//    Reader oleksa("Oleksandr", "Bazavlyk", 19);
-//    oleksa.addBookAtСard(Reading("20180110", "20180506",0));
-//    oleksa.addBookAtСard(Reading("20160110", "20160506",1));
+//    Reader roman("Roman", "Kurtach", 18);
+//    roman.addBookAtСard(Reading("20180110", "20180506",0));
+//    roman.addBookAtСard(Reading("20150110", "20160506",3));
+//    roman.addBookAtСard(Reading("20161210", "20161218",1));
+//    roman.booksLastYear("20160101");
+
+//    Reader oleksa("oleksandr", "baza", 19);
+//    oleksa.addBookAtСard(Reading("20150110", "20160506",3));
+//    oleksa.addBookAtСard(Reading("20161210", "20161218",1));
+
+//    library.addReader(roman);
 //    library.addReader(oleksa);
 
 //    library.saveReaderToJsonFile();
 
-    library.loadReadersFromJsonFile();
+//    library.loadReadersFromJsonFile();
 
-    cout<<"Reader - "<<library.ListReader.empty()<<endl;
-    cout<<"Book - "<<library.ListBook.empty()<<endl;
+//    cout<<library.ListReader[1].getLastName().toStdString()<<endl;
+//    cout<<library.ListReader[0].getLastName().toStdString()<<endl;
+//    library.ListReader[0].addBookAtСard(Reading("20161210", "20161218",10));
+//    library.saveReaderToJsonFile();
 
-//    cout<<library.ListReader[0].getFirstName().toStdString()<<"\t";
-//    cout<<library.ListReader[0].getLastName().toStdString()<<"\t";
+//    library.ListReader[1].booksLastYear("20160101");
+
 
     return 0;
 }

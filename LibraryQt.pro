@@ -17,4 +17,5 @@ HEADERS += \
     book.h \
     library.h \
     reader.h \
-    reading.h
+    reading.h \
+    menu.h

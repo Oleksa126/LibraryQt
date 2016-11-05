@@ -50,10 +50,10 @@ public:
     }
 
     QString getStingDateTookBook()const{
-        return TookBook.toString();
+        return TookBook.toString("yyyyMMdd");
     }
     QString getStringDateReturnBook()const{
-        return ReturnBook.toString();
+        return ReturnBook.toString("yyyyMMdd");
     }
 };
 

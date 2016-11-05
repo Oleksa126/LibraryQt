@@ -29,6 +29,7 @@ public:
         cout<<СardReader.empty();
     }
     void addBookAtСard(Reading reading){СardReader.push_back(reading);}
+
     QJsonObject saveReaderToJson() const{
         QJsonObject jsonObj;
         QJsonArray jsonArray;
@@ -48,7 +49,7 @@ public:
     }
     void booksLastYear(QDate date){
         for(int i = 0; i<СardReader.size(); i++){
-            if(date.daysTo(СardReader[i].getDateTookBook())<365 && date.daysTo(СardReader[i].getDateReturnBook())<365){
+            if(date.daysTo(СardReader[i].getDateTookBook())>0 && date.daysTo(СardReader[i].getDateTookBook())<365 && date.daysTo(СardReader[i].getDateReturnBook())<365){
                cout<<СardReader[i].getBookID()<<"\t";
             }
         }

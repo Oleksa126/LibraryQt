@@ -27,7 +27,6 @@ public:
                 ListBook[i].showBook();
             }
         }
-
     }
     void addBook(Book book){ListBook.push_back(book);}
     void addReader(Reader reader){ListReader.push_back(reader);}

@@ -43,7 +43,6 @@ public:
         return LastName;
     }
 
-
     ~Author(){}
 };
 #endif // AUTHOR_H
