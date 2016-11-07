@@ -10,10 +10,10 @@ void Library:: searchByGenre(QString genre){
 
     cout << "\n\n\t\t\t Search books by " << genre.toStdString() << "\n\n";
     if(resultGenre.empty()){
-        cout<<"Book not found. Please try somothing else\n";
+        cout<<"Book not found. Please try something else\n";
         return;
     }
-    cout<<"# \t ID \t Title \t \t Genre \t\t Author \n";
+    cout<<"# \t ID \t Title \t \t Genre \t\t Author \n\n";
     for(int i = 0; i<resultGenre.size(); i++){
         cout<<i<<"\t";
         resultGenre[i].showBook();
@@ -34,7 +34,7 @@ void Library:: searchByAuthor(QString author){
         cout<<"Book not found. Please try somothing else\n";
         return;
     }
-    cout<<"# \t ID \t Title \t \t Genre \t\t Author \n";
+    cout<<"# \t ID \t Title \t \t Genre \t\t Author \n\n";
     for(int i = 0; i<resultAuthor.size(); i++){
         cout<<i<<"\t";
         resultAuthor[i].showBook();

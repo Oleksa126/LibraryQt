@@ -16,91 +16,102 @@ public:
     }
 
     int prompt_menu_item()
-     {
+    {
         int variant;
         cout << "1. Add reader\n"
-             << "2. Add book\n"
-             << "3. find books by genre\n"
-             << "4. find books by author \n"
-             << "5. how many books read .....\n"
-             << "6. Help\n"
-             << "7. Exit\n" << endl;
+             << "2. Add book to reader\n"
+             << "3. How many books read\n"
+             << "4. Add book\n"
+             << "5. Insertion sort book\n"
+             << "6. Find books by genre\n"
+             << "7. Find books by author\n"
+             << "8. Exit\n" << endl;
         cout << ">>> ";
         cin >> variant;
         return variant;
-     }
+    }
 
     void menu_(){
-        int variant = prompt_menu_item();
-        //do{
-        switch (variant){
-             case 1:
-                cout << "\t\t\t\t Add reader \n" ;
+        int variant=0;
+        do{
+            int variant = prompt_menu_item();
+            switch (variant){
+            case 1:
                 addReader();
+                system("cls");
                 break;
-             case 2:
-                addBook();
+            case 2:
+                addBookToReader();
+                system("cls");
                 break;
-             case 3:
-                searchByGenre();
-                break;
-             case 4:
-                searchByAuthor();
-                break;
-             case 5:
+            case 3:
                 howManyBook();
+                system("cls");
                 break;
-             case 6:
-                cout << "Help" << endl;
+            case 4:
+                addBook();
+                system("cls");
                 break;
-             case 7:
+            case 5:
+                insertionSort();
+                system("cls");
+                break;
+            case 6:
+                searchByGenre();
+                system("cls");
+                break;
+            case 7:
+                searchByAuthor();
+                system("cls");
+                break;
+            case 8:
                 cout << "EXIT" << endl;
                 exit(EXIT_SUCCESS);
-                break;
-             default:
+            default:
                 cerr << "You tourch .." << endl;
                 exit(EXIT_FAILURE);}
-        //}while(variant !=7);
-
+        }while(variant !=8);
     }
 
     void addReader(){
-        QTextStream qtin(stdin);
-        QString line = qtin.readLine();
-
-        QString firstName, lastName;
+        string firstName, lastName;
         int age;
 
         cout << "first name - ";
-        qtin >> firstName;
+        cin >> firstName;
         cout << "last name - ";
-        qtin >> lastName;
+        cin >> lastName;
         cout << "age - ";
-        qtin >> age;
+        cin >> age;
 
-        library.addReader(Reader(firstName,lastName,age));
+        library.addReader(Reader(firstName.c_str(),lastName.c_str(),age));
+        library.saveReaderToJsonFile();
     }
 
     void addBook(){
         string title, genre, firstName, lastName;
 
         cout<<"Title - ";
-        getline(cin,title);
-        cin.get();
-
+        cin>>title;
+        //        getline(cin,title);
+        //        cin.get();
         cout<<"Genre - ";
-        getline(cin, genre);
-        cin.get();
+        cin>>genre;
+        //        getline(cin, genre);
+        //        cin.get();
 
         cout<<"First Name - ";
-        getline(cin,firstName);
-        cin.get();
+        cin>>firstName;
+        //        getline(cin,firstName);
+        //        cin.get();
 
         cout<<"Last Name - ";
-        getline(cin,lastName);
-        cin.get();
+        cin>>lastName;
+        //        getline(cin,lastName);
+        //        cin.get();
 
         library.addBook(Book(title.c_str(), genre.c_str(), firstName.c_str(), lastName.c_str()));
+        library.saveBookToJsonFile();
     }
 
     void searchByGenre(){
@@ -112,6 +123,7 @@ public:
         cout<< ">>> ";
         cin>>j;
         library.searchByGenre(genre[j]);
+        system("pause");
     }
 
     void searchByAuthor(){
@@ -127,12 +139,11 @@ public:
         cout<< ">>> ";
         cin>>j;
         library.searchByAuthor(author[j]);
+        system("pause");
     }
 
     void howManyBook(){
-//        vector<QString> readers;
         for(int i = 0; i<library.ListReader.size(); i++){
-//            readers.push_back(library.ListReader[i].getLastName());
             cout<<i<<". ";
             cout<<library.ListReader[i].getLastName().toStdString()<<endl;
         }
@@ -141,14 +152,68 @@ public:
         cin>>j;
 
         string date;
-        cout<<"date - ";
+        cout<<"Date - ";
         cin>>date;
+
         library.ListReader[j].booksLastYear(date.c_str());
+
+        system("pause");
     }
-    ~Menu(){
-        library.saveBookToJsonFile();
+
+    void addBookToReader(){
+        for(int i = 0; i<library.ListReader.size(); i++){
+            cout<<i<<". ";
+            cout<<library.ListReader[i].getLastName().toStdString()<<endl;
+        }
+        int j;
+        cout<< ">>> ";
+        cin>>j;
+
+        string whenTook, whenReturnBook;
+        int id;
+        cout<<"When took book - ";
+        cin>>whenTook;
+
+        cout<<"When return book - ";
+        cin>>whenReturnBook;
+
+        cout<<"Id book ";
+        cin>>id;
+        library.ListReader[j].addBookAtСard(Reading(whenTook.c_str(), whenReturnBook.c_str(), id));
         library.saveReaderToJsonFile();
     }
+
+    void insertionSort(){
+        cout<<"\n before: \n\n";
+        cout<<"# \t ID \t Title \t \t Genre \t\t Author \n\n";
+        for(int i = 0; i<library.ListBook.size(); i++){
+            library.ListBook[i].showBook();
+        }
+
+        vector<Book> sortBook;
+        sortBook = library.ListBook;
+        for(int i = 0; i<sortBook.size();i++){
+            for(int j = i; j<sortBook.size();j++){
+                if(sortBook[i].getID() < sortBook[j].getID()){
+                    Book tmp;
+                    tmp = sortBook[i];
+                    sortBook[i] = sortBook[j];
+                    sortBook[j] = tmp;
+                }
+
+            }
+        }
+
+        cout<<"\n after: \n\n";
+        cout<<"# \t ID \t Title \t \t Genre \t\t Author \n\n";
+        for(int  i = 0; i<sortBook.size(); i++){
+            sortBook[i].showBook();
+        }
+
+        system("pause");
+    }
+
+    ~Menu(){}
 };
 
 
