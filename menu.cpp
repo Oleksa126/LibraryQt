@@ -77,7 +77,7 @@ void Menu:: addReader(){
     library.saveReaderToJsonFile();
 }
 
-void Menu::addBook(){
+void Menu:: addBook(){
     string title, genre, firstName, lastName;
 
     cin.ignore();
@@ -126,7 +126,7 @@ void Menu:: searchByAuthor(){
     cout<< ">>> ";
     cin>>j;
     if(j>author.size()){
-        cout<<"please try \n";
+        cout<<"please try againe\n";
         system("pause");
         return;
     }
@@ -160,6 +160,10 @@ void Menu:: addBookToReader(){
     cout<< ">>> ";
     cin>>j;
 
+    if(j>library.ListReader.size()){
+        cout<<"please try againe\n";
+        return;
+    }
     string whenTook, whenReturnBook;
     int id;
     cout<<"When took book - ";

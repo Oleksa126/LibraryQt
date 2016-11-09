@@ -57,34 +57,5 @@
         ],
         "FirstName": "oleksandr",
         "LastName": "bazavlyk"
-    },
-    {
-        "Age": 19,
-        "Book": [
-            {
-                "ID": 12,
-                "ReturnBook": "20160818",
-                "TookBook": "20160809"
-            },
-            {
-                "ID": 85,
-                "ReturnBook": "20190506",
-                "TookBook": "20180809"
-            }
-        ],
-        "FirstName": "Oleksandr",
-        "LastName": "Bazavlyk"
-    },
-    {
-        "Age": 19,
-        "Book": [
-            {
-                "ID": 58,
-                "ReturnBook": "20160809",
-                "TookBook": "20160405"
-            }
-        ],
-        "FirstName": "olekandr prost",
-        "LastName": "bazavlyk fd"
     }
 ]

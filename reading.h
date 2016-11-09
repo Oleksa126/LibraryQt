@@ -4,8 +4,6 @@
 #include "QDate"
 #include "QString"
 #include "book.h"
-#include "library.h"
-
 class Reading
 {
 private:
@@ -14,24 +12,12 @@ private:
     int BookID;
 public:
     Reading(){}
-    Reading(QString whenTook, QString whenReturn,int id){
-        setDateTookBook(whenTook);
-        setDateReturnBook(whenReturn);
-        setBookId(id);
-    }
+    Reading(QString whenTook, QString whenReturn,int id);
 
-    QJsonObject saveReadingToJson()const{
-        QJsonObject json;
-        json["TookBook"] = this->getStingDateTookBook();
-        json["ReturnBook"] = this->getStringDateReturnBook();
-        json["ID"] = this->getBookID();
-        return json;
-    }
-    void readReading(QJsonObject &json){
-        this->setBookId(json["ID"].toInt());
-        this->setDateReturnBook(json["ReturnBook"].toString());
-        this->setDateTookBook(json["TookBook"].toString());
-    }
+    QJsonObject saveReadingToJson()const;
+
+    void readReading(QJsonObject &json);
+
     void setBookId(int id){
         BookID = id;}
     void setDateTookBook(QString date){
@@ -48,7 +34,6 @@ public:
     QDate getDateReturnBook()const{
         return ReturnBook;
     }
-
     QString getStingDateTookBook()const{
         return TookBook.toString("yyyyMMdd");
     }
