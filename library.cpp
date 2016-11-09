@@ -1,5 +1,6 @@
 #include "library.h"
 
+
 void Library:: searchByGenre(QString genre){
     vector<Book> resultGenre;
     for(int i = 0; i<ListBook.size(); i++){

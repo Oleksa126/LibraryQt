@@ -4,9 +4,3 @@
 —к≥льки книг прочитав читач за останн≥й р≥к 
 вставкою (Insertion sort)
 
-
-Problems{
-
-static int counter в книжц≥;
-
-}

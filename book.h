@@ -5,12 +5,14 @@
 #include "QJsonObject"
 #include "author.h"
 #include "iostream"
+
+#include<string.h>
 using namespace std;
 
-static int counter;
 class Book
 {
 private:
+    static int counter;
     int ID;
     QString Title;
     QString Genre;
@@ -37,17 +39,18 @@ public:
         counter++;
     }
 
-    QJsonObject saveBookToJson()const{
-       QJsonObject jsonObj;
-           jsonObj = this->author.saveAuthorToJson();
-           jsonObj["Title"] = this->getTitle();
-           jsonObj["Genre"] = this->getGenre();
-           jsonObj["ID"] = this->getID();
-       return jsonObj;
-    }
+    QJsonObject saveBookToJson()const;
+
     void showBook()const{
         cout<<getID()<< "\t" <<getTitle().toStdString()<<"\t"<<getGenre().toStdString()<<"\t"<<author.getFirstName().toStdString()<<"\t"<<author.getLastName().toStdString()<<endl;
     }
+
+    bool operator<(const Book & bk_)
+    {
+        return this->author.getFirstName().operator <( bk_.author.getFirstName().toLatin1());
+    }
+
+    friend ostream& operator <<(ostream &show, const Book &book);
 
     void setTitle(QString title){Title = title;}
     void setGenre(QString genre){Genre = genre;}
@@ -59,5 +62,6 @@ public:
 
     ~Book(){}
 };
+
 
 #endif // BOOK_H
