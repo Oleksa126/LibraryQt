@@ -24,6 +24,13 @@ public:
 
     QJsonObject saveReaderToJson() const;
 
+    bool operator<(const Reader &reader)
+    {
+        return this->getFirstName().operator <(reader.getFirstName().toLatin1());
+    }
+
+    friend ostream& operator <<(ostream &show, const Reader &reader);
+
     void booksLastYear(QString date);
     void booksLastYear(QDate date);
     void booksLastYear();

@@ -24,7 +24,7 @@ public:
     void findBookById(int bookId)const{
         for(int i =0; i<ListBook.size(); i++){
             if(ListBook[i].getID() == bookId){
-                ListBook[i].showBook();
+                cout<<ListBook[i];
             }
         }
     }

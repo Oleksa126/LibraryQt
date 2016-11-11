@@ -31,6 +31,8 @@ public:
 
     void addBookToReader();
 
+    void insertionSortMenu();
+
     template <class ElementType>
     void insertionSort(vector<ElementType> &arr);
     ~Menu(){}

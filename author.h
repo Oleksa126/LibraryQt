@@ -25,6 +25,19 @@ public:
          return jsonObj;
      }
 
+    bool operator<(const Author &author)
+    {
+        return this->getFirstName().operator <( author.getFirstName().toLatin1());
+    }
+
+    friend ostream& operator <<(ostream &show, const Author &author){
+        QString str = QString("%1 %2")
+                .arg(author.getFirstName(),15)
+                .arg(author.getLastName(),15);
+        show<<str.toStdString()<<endl;
+        return show;
+    }
+
     Author readAutorFromJson(const QJsonObject &json){
        return Author (json["First Name"].toString(), json["Last Name"].toString());
     }

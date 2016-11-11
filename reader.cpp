@@ -35,3 +35,10 @@ void Reader:: booksLastYear(QDate date){
         }
     }
 }
+
+ostream& operator <<(ostream &show, const Reader &reader){
+    QString str = QString("%1 %2 %3").arg(reader.getFirstName(),15).arg(reader.getLastName(),15).arg(reader.getAge(),15);
+    show<<str.toStdString()<<endl;
+    //show<<reader.getFirstName().toStdString()<<"\t"<<reader.getLastName().toStdString()<<"\t"<<reader.getAge()<<endl;
+    return show;
+}

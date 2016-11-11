@@ -39,8 +39,7 @@ void Menu:: meinMenu(){
             system("cls");
             break;
         case 5:
-            cout<<"sort by author \n";
-            insertionSort(library.ListBook);
+            insertionSortMenu();
             system("cls");
             break;
         case 6:
@@ -178,13 +177,42 @@ void Menu:: addBookToReader(){
     library.saveReaderToJsonFile();
 }
 
+void Menu:: insertionSortMenu(){
+    vector<Author> author;
+    for(int i = 0; i<library.ListBook.size(); i++){
+        author.push_back(library.ListBook[i].author);
+    }
+
+    int a = 0;
+    cout<<"SORT: \n"
+        <<"1. Book by Author FirstName \n"
+        <<"2. Readers by First Name \n"
+        <<"3. Author by FirstName \n";
+    cout << ">>> ";
+    cin>>a;
+    switch(a){
+    case 1:
+        insertionSort(library.ListBook); //books by author
+        break;
+    case 2:
+        insertionSort(library.ListReader);
+        system("cls");
+        break;
+    case 3:
+
+        insertionSort(author);
+    default:
+        cerr << "You tourch .." << endl;
+        system("cls");
+        break;
+    }
+}
 template <class ElementType>
 void Menu:: insertionSort(vector<ElementType> &arr){
     cout<<"\n before: \n\n";
     for(int i = 0; i<arr.size(); i++){
         cout<<arr[i];
     }
-
     for(int i = 0; i<arr.size();i++){
         for(int j = i; j<arr.size();j++){
             if(arr[i] < arr[j]){

@@ -41,10 +41,6 @@ public:
 
     QJsonObject saveBookToJson()const;
 
-    void showBook()const{
-        cout<<getID()<< "\t" <<getTitle().toStdString()<<"\t"<<getGenre().toStdString()<<"\t"<<author.getFirstName().toStdString()<<"\t"<<author.getLastName().toStdString()<<endl;
-    }
-
     bool operator<(const Book & bk_)
     {
         return this->author.getFirstName().operator <( bk_.author.getFirstName().toLatin1());

@@ -12,7 +12,15 @@ QJsonObject Book :: saveBookToJson()const{
 }
 
 ostream& operator <<(ostream &show, const Book &book){
-    show<<book.getID()<<"\t"<<book.getTitle().toStdString()<<"\t"<<book.getGenre().toStdString()<<"\t"<<book.author.getFirstName().toStdString()<<"\t"<<book.author.getLastName().toStdString()<<endl;
+    QString str = QString("%1 %2 %3 %4")
+            .arg(book.getTitle(),15)
+            .arg(book.getGenre(),15)
+            .arg(book.author.getFirstName(),15)
+            .arg(book.author.getLastName(),15);
+
+    show<<str.toStdString()<<endl;
+
+//    show<<book.getID()<<"\t"<<book.getTitle().toStdString()<<"\t"<<book.getGenre().toStdString()<<"\t"<<book.author.getFirstName().toStdString()<<"\t"<<book.author.getLastName().toStdString()<<endl;
     return show;
 }
 
