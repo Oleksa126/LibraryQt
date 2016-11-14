@@ -26,7 +26,7 @@ public:
 
     bool operator<(const Reader &reader)
     {
-        return this->getFirstName().operator <(reader.getFirstName().toLatin1());
+        return this->getFirstName().toLower().operator <(reader.getFirstName().toLatin1().toLower());
     }
 
     friend ostream& operator <<(ostream &show, const Reader &reader);

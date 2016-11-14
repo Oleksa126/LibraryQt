@@ -5,7 +5,7 @@ int Menu:: prompt_menu_item()
     int variant;
     cout << "1. Add reader\n"
          << "2. Add book to reader\n"
-         << "3. How many books read\n"
+         << "3. How many books read reader\n"
          << "4. Add book\n"
          << "5. Insertion sort book\n"
          << "6. Find books by genre\n"
@@ -20,7 +20,7 @@ void Menu:: meinMenu(){
     vector<Book> book = library.ListBook;
     int variant=0;
     do{
-        int variant = prompt_menu_item();
+        variant = prompt_menu_item();
         switch (variant){
         case 1:
             addReader();
@@ -64,12 +64,11 @@ void Menu:: addReader(){
     int age;
 
     cin.ignore();
-
-    cout << "first name - ";
+    cout << "First name - ";
     getline(cin,firstName);
-    cout << "last name - ";
+    cout << "Last name - ";
     getline(cin,lastName);
-    cout << "age - ";
+    cout << "Age - ";
     cin >> age;
 
     library.addReader(Reader(firstName.c_str(),lastName.c_str(),age));
@@ -104,6 +103,11 @@ void Menu:: searchByGenre(){
     }
     cout<< ">>> ";
     cin>>j;
+    if(j>genre.size()){
+        cout<<"please try againe\n";
+        system("pause");
+        return;
+    }
     library.searchByGenre(genre[j]);
     system("pause");
 }
@@ -161,17 +165,18 @@ void Menu:: addBookToReader(){
 
     if(j>library.ListReader.size()){
         cout<<"please try againe\n";
+        system("pause");
         return;
     }
     string whenTook, whenReturnBook;
     int id;
-    cout<<"When took book - ";
+    cout<<"When took book (yyyyMMdd) - ";
     cin>>whenTook;
 
-    cout<<"When return book - ";
+    cout<<"When return book (yyyyMMdd) - ";
     cin>>whenReturnBook;
 
-    cout<<"Id book ";
+    cout<<"Id book - ";
     cin>>id;
     library.ListReader[j].addBookAtСard(Reading(whenTook.c_str(), whenReturnBook.c_str(), id));
     library.saveReaderToJsonFile();
@@ -185,25 +190,24 @@ void Menu:: insertionSortMenu(){
 
     int a = 0;
     cout<<"SORT: \n"
-        <<"1. Book by Author FirstName \n"
-        <<"2. Readers by First Name \n"
-        <<"3. Author by FirstName \n";
+        <<"1. Book by Author first name \n"
+        <<"2. Readers by first name \n"
+        <<"3. Author by first name \n";
     cout << ">>> ";
     cin>>a;
     switch(a){
     case 1:
-        insertionSort(library.ListBook); //books by author
+        insertionSort(library.ListBook);
         break;
     case 2:
         insertionSort(library.ListReader);
-        system("cls");
         break;
     case 3:
-
         insertionSort(author);
+        break;
     default:
         cerr << "You tourch .." << endl;
-        system("cls");
+        system("pause");
         break;
     }
 }

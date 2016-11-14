@@ -43,7 +43,7 @@ public:
 
     bool operator<(const Book & bk_)
     {
-        return this->author.getFirstName().operator <( bk_.author.getFirstName().toLatin1());
+        return this->author.getFirstName().toLower().operator <( bk_.author.getFirstName().toLatin1().toLower());
     }
 
     friend ostream& operator <<(ostream &show, const Book &book);
